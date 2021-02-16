@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jean.shopmongo.domain.User;
+import com.jean.shopmongo.dto.UserDTO;
 import com.jean.shopmongo.repositories.UserRepository;
 import com.jean.shopmongo.services.exception.ObjectNotFoundExecption;
 
@@ -26,4 +27,15 @@ public class UserService {
 		}
 		return user;
 	}
+	
+	public User insert(User obj) {
+		return userRepository.insert(obj);		
+	}
+	
+	public User fromDTO(UserDTO objDto) {
+		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+	}
+	
+	
+	
 }
